@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxPW = new System.Windows.Forms.TextBox();
             this.buttonExpand = new System.Windows.Forms.Button();
+            this.buttonJsonWrite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treeViewCategoryList
@@ -149,19 +150,30 @@
             // 
             // buttonExpand
             // 
-            this.buttonExpand.Location = new System.Drawing.Point(275, 452);
+            this.buttonExpand.Location = new System.Drawing.Point(334, 452);
             this.buttonExpand.Name = "buttonExpand";
-            this.buttonExpand.Size = new System.Drawing.Size(168, 55);
+            this.buttonExpand.Size = new System.Drawing.Size(109, 55);
             this.buttonExpand.TabIndex = 11;
             this.buttonExpand.Text = "전부 펼치기 / 접기";
             this.buttonExpand.UseVisualStyleBackColor = true;
             this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
+            // 
+            // buttonJsonWrite
+            // 
+            this.buttonJsonWrite.Location = new System.Drawing.Point(208, 452);
+            this.buttonJsonWrite.Name = "buttonJsonWrite";
+            this.buttonJsonWrite.Size = new System.Drawing.Size(109, 55);
+            this.buttonJsonWrite.TabIndex = 12;
+            this.buttonJsonWrite.Text = "제이슨 파일 생성";
+            this.buttonJsonWrite.UseVisualStyleBackColor = true;
+            this.buttonJsonWrite.Click += new System.EventHandler(this.buttonJsonWrite_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 519);
+            this.Controls.Add(this.buttonJsonWrite);
             this.Controls.Add(this.buttonExpand);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxPW);
@@ -195,6 +207,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxPW;
         private System.Windows.Forms.Button buttonExpand;
+        private System.Windows.Forms.Button buttonJsonWrite;
     }
 }
 

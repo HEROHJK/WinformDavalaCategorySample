@@ -14,6 +14,7 @@ namespace 카테고리테스트
     public partial class Form1 : Form
     {
         DataBaseManager dbm;
+        DataFormat total;
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace 카테고리테스트
             treeViewCategoryList.Nodes.Clear();
 
             //하나로 뭉치기
-            DataFormat total = new DataFormat(0, "카테고리", 0);
+            total = new DataFormat(0, "카테고리", 0);
             foreach(DataFormat df in dbm.list)
             {
                 total.childList.Add(df);
@@ -71,6 +72,35 @@ namespace 카테고리테스트
                 else treeViewCategoryList.ExpandAll();
             }
             catch { }
+        }
+
+        private StringBuilder JsonWriter(DataFormat format)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("{ \"index\" : \""+format.index+"\"," +
+                "\"name\" : \""+format.name+"\","+
+                "\"parentIndex\" : \""+format.parentIndex+"\","+
+                "\"childList\" : [");
+
+            foreach(DataFormat df in format.childList)
+            {
+                sb.Append(JsonWriter(df));
+                sb.Append("},");
+            }
+
+            if (format.childList.Count != 0) sb.Remove(sb.Length - 1, 1);
+            sb.Append("]");
+
+            return sb;
+        }
+
+        private void buttonJsonWrite_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = JsonWriter(total);
+            sb = sb.Append("}");
+            Clipboard.SetText(sb.ToString());
+            MessageBox.Show("복사되었습니다. 아무데나 붙여넣기 하세여");
         }
     }
 }
